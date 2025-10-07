@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorite - Kerajaan Indonesia</title>
-    
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css_next/favorite.css">
+    <style>
+        .empty-message { text-align: center; font-size: 1.2rem; color: #777; width: 100%; padding: 40px 0;}
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -16,63 +18,19 @@
             <li><a href="favorite.html" class="active">FAVORITE</a></li>
         </ul>
     </nav>
-
     <main class="container">
         <div class="page-header">
             <h1>Kerajaan Favorit Anda</h1>
             <p>Kumpulan kerajaan-kerajaan yang telah Anda tandai sebagai favorit.</p>
         </div>
-
         <div class="favorite-counter">
             <p>Total Kerajaan Favorit: <span class="counter-number" id="favoriteCount">0</span></p>
         </div>
-
         <div class="favorite-grid" id="favoriteGrid">
-
-            <div class="favorite-card">
-                <div class="card-image">
-                    <img src="../assets/images/majapahit.webp" alt="Kerajaan Majapahit">
-                </div>
-                <div class="card-content">
-                    <h3>Kerajaan Majapahit</h3>
-                    <p>Kemaharajaan Hindu-Buddha yang dianggap sebagai salah satu negara terbesar dalam sejarah Indonesia.</p>
-                    <div class="card-footer">
-                        <a href="majapahit.html" class="btn">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="favorite-card">
-                <div class="card-image">
-                    <img src="../assets\images\mataramkuno_a.jpeg" alt="Kerajaan Mataram Kuno">
-                </div>
-                <div class="card-content">
-                    <h3>Mataram Kuno</h3>
-                    <p>Peradaban agung di Jawa Tengah yang menghasilkan mahakarya arsitektur seperti Candi Borobudur dan Prambanan.</p>
-                    <div class="card-footer">
-                        <a href="mataram_kuno.html" class="btn">Baca Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-
             </div>
     </main>
 
-    <script>
-        // SCRIPT UNTUK MENGHITUNG FAVORIT SECARA OTOMATIS
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mengambil elemen kontainer grid dan elemen span untuk counter
-            const favoriteGrid = document.getElementById('favoriteGrid');
-            const favoriteCountSpan = document.getElementById('favoriteCount');
-
-            // Menghitung jumlah elemen kartu di dalam grid
-            const numberOfFavorites = favoriteGrid.getElementsByClassName('favorite-card').length;
-
-            // Memperbarui teks pada counter
-            favoriteCountSpan.textContent = numberOfFavorites;
-        });
-
-        console.log('Favorite page loaded and counter script executed.');
-    </script>
+    <script src="../js_next/kerajaan-data.js"></script>
+    <script src="../js_next/favorite.js"></script>
 </body>
 </html>

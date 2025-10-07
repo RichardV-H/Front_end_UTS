@@ -10,14 +10,18 @@
 
   <nav class="navbar">
     <ul>
-      <li><a href="../home.html">HOME</a></li>
+      <li><a href="../index.html">HOME</a></li>
       <li><a href="kerajaan.html" class="active">KERAJAAN</a></li>
       <li><a href="favorite.html">FAVORITE</a></li>
     </ul>
   </nav>
 
   <div class="content">
-    <h3>List Kerajaan Buddhis</h3>
+    <div class="search-container">
+    <form id="searchForm">
+        <input type="search" id="searchInput" placeholder="Cari kerajaan berdasarkan nama, lalu tekan Enter...">
+    </form>
+</div>
 
     <div class="card-container">
 
@@ -57,8 +61,27 @@
         </div>
       </div>
 
+      <div class="card">
+       <img src="../assets/images/kutai.jpeg" alt="Kerajaan Kutai Martadipura">
+       <div class="card-text">
+         <h4>Kerajaan Kutai <span>(abad ke-4 Masehi)</span></h4>
+         <p>Kerajaan Kutai Martadipura adalah kerajaan Hindu tertua di Nusantara, dikenal melalui peninggalan Prasasti Yupa di Muara Kaman, Kalimantan Timur.</p>
+         <a href="kutai.html" class="btn-detail">Detail</a>
+       </div>
+     </div>
+
+      <div class="card">
+    <img src="../assets/images/singhasari.jpeg" alt="Kerajaan Singhasari">
+    <div class="card-text">
+      <h4>Kerajaan Singhasari <span>(1222 – 1292 Masehi)</span></h4>
+      <p>Didirikan oleh Ken Arok di Jawa Timur, kerajaan ini terkenal dengan kisah perebutan takhtanya yang dramatis dan menjadi cikal bakal Kemaharajaan Majapahit.</p>
+      <a href="singhasari.html" class="btn-detail">Detail</a>
+    </div>
+</div>
+
     </div>
   </div>
-
+<script src="../js_next/kerajaan-data.js"></script>
+<script src="../js_next/favorite.js"></script>
 </body>
 </html>
