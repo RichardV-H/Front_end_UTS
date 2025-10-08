@@ -30,13 +30,13 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 100;
+    background: rgba(44, 62, 80, 0.8);
+    border-bottom: 2px solid var(--warna-emas-kuno);
     display: flex;
     justify-content: center;
     padding: 15px 0;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
 }
 
 .navbar ul {
@@ -75,56 +75,74 @@ body {
   padding-bottom: 5px;
 }
 
-.card-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 80%;
-  margin: 0 auto;
+#kerajaanGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 0 40px;
+    max-width: 1400px;
+    margin: 0 auto 40px auto;
 }
 
 .card {
-  background: #fff;
-  border: 2px solid black;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: left;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
 }
 
 .card-text {
-  padding: 20px;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-text h4 {
-  margin: 0;
-  font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin: 0;
 }
 
-.card-text span {
-  font-size: 0.9rem;
-  font-weight: normal;
+.card-text h4 span {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #777;
+    margin-left: 8px;
 }
 
 .card-text p {
-  margin: 10px 0 20px 0;
+    margin: 15px 0 25px 0;
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
 .btn-detail {
-  display: inline-block;
-  padding: 6px 12px;
-  background: black;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 0.9rem;
+    display: inline-block;
+    align-self: flex-start;
+    padding: 8px 24px;
+    background: #2c3e50;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
+.btn-detail:hover {
+    background: #c5a47e;
+    color: #2c3e50;
+}
 .header-container .favorite-button {
     margin-bottom: 0;
     flex-shrink: 0;
@@ -138,9 +156,8 @@ body {
     justify-content: flex-end; 
 }
 
-
 .search-container {
-    padding: 40px 20px;
+    padding: 65px 20px;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -162,3 +179,33 @@ body {
     box-shadow: 0 0 10px rgba(197, 164, 126, 0.5);
 }
 
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 2px solid var(--warna-gelap);
+    background-color: transparent;
+    color: var(--warna-gelap);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--warna-emas-kuno);
+    border-color: var(--warna-emas-kuno);
+}
+
+.filter-btn.active {
+    background-color: var(--warna-gelap);
+    color: var(--warna-putih);
+    border-color: var(--warna-gelap);
+}

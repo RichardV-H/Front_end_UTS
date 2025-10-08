@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const favorites = localStorage.getItem('favorites');
         return favorites ? JSON.parse(favorites) : [];
     };
+
     const saveFavorites = (favoritesArray) => {
         localStorage.setItem('favorites', JSON.stringify(favoritesArray));
     };
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 favoriteButton.classList.remove('favorited');
             }
         };
+
         favoriteButton.addEventListener('click', () => {
             let favorites = getFavorites();
             if (favorites.includes(kingdomId)) {
@@ -48,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const kingdomData = semuaKerajaan[kingdomId];
                 if (kingdomData) {
                     const card = document.createElement('div');
-                    card.className = 'favorite-card';
+                    card.className = 'card';
                     card.innerHTML = `
-                        <div class="card-image"><img src="${kingdomData.gambar}" alt="${kingdomData.nama}"></div>
-                        <div class="card-content">
-                            <h3>${kingdomData.nama}</h3>
+                        <img src="${kingdomData.gambar}" alt="${kingdomData.nama}">
+                        <div class="card-text">
+                            <h4>${kingdomData.nama} <span>${kingdomData.periode}</span></h4>
                             <p>${kingdomData.deskripsi}</p>
-                            <div class="card-footer"><a href="${kingdomData.url}" class="btn">Baca Selengkapnya</a></div>
+                            <a href="${kingdomData.url}" class="btn-detail">Detail</a>
                         </div>`;
                     favoriteGrid.appendChild(card);
                 }
@@ -65,51 +67,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const kerajaanGrid = document.getElementById('kerajaanGrid');
     const searchInput = document.getElementById('searchInput');
     const searchForm = document.getElementById('searchForm');
+    const filterButtons = document.querySelectorAll('.filter-btn');
 
-    if (kerajaanGrid && searchForm && searchInput) {
-        
-        const renderKerajaanCards = (filter = '') => {
+    if (kerajaanGrid) {
+        let currentFilter = 'semua';
+
+        const renderKerajaanCards = () => {
             kerajaanGrid.innerHTML = ''; 
-            const filterText = filter.toLowerCase();
+            const searchText = searchInput ? searchInput.value.toLowerCase() : '';
             const semuaIdKerajaan = Object.keys(semuaKerajaan);
             let resultsFound = false;
 
             semuaIdKerajaan.forEach(kingdomId => {
                 const kingdomData = semuaKerajaan[kingdomId];
-                const kingdomName = kingdomData.nama.toLowerCase();
+                
+                const nameMatch = kingdomData.nama.toLowerCase().includes(searchText);
+                const typeMatch = (currentFilter === 'semua') || kingdomData.tipe.includes(currentFilter);
 
-                if (kingdomName.includes(filterText)) {
+                if (nameMatch && typeMatch) {
                     resultsFound = true;
                     const card = document.createElement('div');
-                    card.className = 'kerajaan-card';
+                    card.className = 'card';
                     card.innerHTML = `
-                        <div class="card-image"><img src="${kingdomData.gambar}" alt="${kingdomData.nama}"></div>
-                        <div class="card-content">
-                            <h3>${kingdomData.nama}</h3>
+                        <img src="${kingdomData.gambar}" alt="${kingdomData.nama}">
+                        <div class="card-text">
+                            <h4>${kingdomData.nama} <span>${kingdomData.periode}</span></h4>
                             <p>${kingdomData.deskripsi}</p>
-                            <div class="card-footer"><a href="${kingdomData.url}" class="btn">Baca Selengkapnya</a></div>
+                            <a href="${kingdomData.url}" class="btn-detail">Detail</a>
                         </div>`;
                     kerajaanGrid.appendChild(card);
                 }
             });
 
-            if (!resultsFound && filter !== '') {
-                kerajaanGrid.innerHTML = `<p class="empty-message">Kerajaan "${filter}" tidak ditemukan.</p>`;
+            if (!resultsFound) {
+                kerajaanGrid.innerHTML = `<p class="empty-message">Tidak ada kerajaan yang cocok.</p>`;
             }
         };
 
         renderKerajaanCards();
 
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const searchText = searchInput.value;
-            renderKerajaanCards(searchText);
-        });
-        
-        searchInput.addEventListener('input', () => {
-            if (searchInput.value === '') {
+        if (searchForm) {
+            searchForm.addEventListener('submit', (e) => {
+                e.preventDefault();
                 renderKerajaanCards();
-            }
+            });
+        }
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                if (searchInput.value === '') {
+                    renderKerajaanCards();
+                }
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                currentFilter = button.getAttribute('data-filter');
+                renderKerajaanCards();
+            });
         });
     }
 });
