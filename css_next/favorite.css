@@ -46,6 +46,6 @@
     font-size: 1.2rem; 
     color: #777; 
     width: 100%; 
-    grid-column: 1 / -1; /* Membuat pesan ini memenuhi seluruh lebar grid */
+    grid-column: 1 / -1;
     padding: 40px 0;
 }

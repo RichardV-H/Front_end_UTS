@@ -59,7 +59,7 @@ body {
 
 .navbar ul li a.active {
     color: var(--warna-emas-kuno);
-    text-decoration: none;
+    text-decoration: underline ;
 }
 
 .content {
