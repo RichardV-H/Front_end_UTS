@@ -1,64 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kerajaan Hindu-Buddhis</title>
-  <link rel="stylesheet" href="../css_next/kerajaan.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Kerajaan - Sejarah Nusantara</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css_next/kerajaan.css">
 </head>
 <body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="kerajaan.html" class="active">KERAJAAN</a></li>
+            <li><a href="favorite.html">FAVORITE</a></li>
+        </ul>
+    </nav>
 
-  <nav class="navbar">
-    <ul>
-      <li><a href="../home.html">HOME</a></li>
-      <li><a href="kerajaan.html" class="active">KERAJAAN</a></li>
-      <li><a href="favorite.html">FAVORITE</a></li>
-    </ul>
-  </nav>
-
-  <div class="content">
-    <h3>List Kerajaan Buddhis</h3>
-
-    <div class="card-container">
-
-      <div class="card">
-        <img src="../assets/images/sample1.jpeg" alt="Kerajaan Majapahit">
-        <div class="card-text">
-          <h4>Kerajaan Majapahit <span>(1293–1527)</span></h4>
-          <p>Kerajaan Majapahit dikenal sebagai salah satu kerajaan terbesar di Nusantara yang mencapai puncak kejayaan pada masa pemerintahan Hayam Wuruk dan Gajah Mada.</p>
-          <a href="majapahit.html" class="btn-detail">Detail</a>
+    <main class="container">
+        
+        <div class="search-container">
+            <form id="searchForm">
+                <input type="search" id="searchInput" placeholder="Cari kerajaan berdasarkan nama, lalu tekan Enter...">
+            </form>
         </div>
-      </div>
 
-      <div class="card">
-        <img src="../assets/images/sriwijaya.jpg" alt="Kerajaan Sriwijaya">
-        <div class="card-text">
-          <h4>Kerajaan Sriwijaya <span>(abad ke-7 – 13)</span></h4>
-          <p>Kerajaan maritim besar di Sumatra yang menguasai jalur perdagangan Asia Tenggara dan menjadi pusat penyebaran agama Buddha di Nusantara.</p>
-          <a href="sriwijaya.html" class="btn-detail">Detail</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assets/images/tarumanagara.jpg" alt="Kerajaan Tarumanegara">
-        <div class="card-text">
-          <h4>Kerajaan Tarumanagara <span>(abad ke-4 – 7)</span></h4>
-          <p>Salah satu kerajaan tertua di Jawa Barat yang terkenal dengan prasasti-prasasti beraksara Pallawa dan peninggalan Sungai Gomati.</p>
-          <a href="tarumanagara.html" class="btn-detail">Detail</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../assets\images\mataramkuno_a.jpeg" alt="Kerajaan Mataram Kuno">
-        <div class="card-text">
-          <h4>Kerajaan Mataram Kuno <span>(abad ke-8 – 11 Masehi)</span></h4>
-          <p>Kerajaan Mataram Kuno, juga dikenal sebagai Kerajaan Medang, adalah kerajaan Hindu-Buddha di Jawa yang berpusat di Jawa Tengah pada abad ke-8 Masehi dan kemudian pindah ke Jawa Timur pada abad ke-10 Masehi, berakhir pada awal abad ke-11</p>
-          <a href="mataramkuno.html" class="btn-detail">Detail</a>
-        </div>
-      </div>
-
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="semua">Semua</button>
+        <button class="filter-btn" data-filter="Hindu">Hindu</button>
+        <button class="filter-btn" data-filter="Buddha">Buddha</button>
     </div>
-  </div>
 
+        <div class="kerajaan-grid" id="kerajaanGrid"></div>
+
+    </main>
+
+    <script src="../js_next/kerajaan-data.js"></script>
+    <script src="../js_next/favorite.js"></script>
 </body>
 </html>
